@@ -1,6 +1,5 @@
 package ru.kudryashov.newtech.configs;
 
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
