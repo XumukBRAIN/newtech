@@ -16,7 +16,7 @@ import ru.kudryashov.newtech.services.UserService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
-public class AuthRestControllerV1 {
+public class AuthController {
     private final SecurityService securityService;
     private final UserService userService;
     private final UserMapper userMapper;

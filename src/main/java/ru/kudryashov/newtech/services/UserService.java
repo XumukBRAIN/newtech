@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import ru.kudryashov.newtech.entities.User;
-import ru.kudryashov.newtech.entities.UserRole;
+import ru.kudryashov.newtech.entities.Role;
 import ru.kudryashov.newtech.repositories.UserRepository;
 
 import java.time.LocalDateTime;
@@ -22,7 +22,7 @@ public class UserService {
     public Mono<User> register(User user) {
         return userRepository.save(user.toBuilder()
                         .password(passwordEncoder.encode(user.getPassword()))
-                        .role(UserRole.USER)
+                        .role(Role.USER)
                         .enabled(true)
                         .createdAt(LocalDateTime.now())
                         .updatedAt(LocalDateTime.now())

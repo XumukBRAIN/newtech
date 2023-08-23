@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 @Table
-public class User {
+public class Manager {
     @Id
     private UUID id;
     private String username;
@@ -20,6 +21,7 @@ public class User {
     private Role role;
     private String firstName;
     private String lastName;
+    private BigDecimal salary;
     private String phoneNumber;
     private String email;
     private boolean enabled;

@@ -8,13 +8,7 @@ import ru.kudryashov.newtech.exceptions.UnauthorizedException;
 import java.util.Base64;
 import java.util.Date;
 
-public class JwtHandler {
-
-    public final String secret;
-
-    public JwtHandler(String secret) {
-        this.secret = secret;
-    }
+public record JwtHandler(String secret) {
 
     public Mono<VerificationResult> check(String accessToken) {
         return Mono.just(verify(accessToken))

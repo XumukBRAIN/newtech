@@ -1,6 +1,6 @@
 package ru.kudryashov.newtech.entities;
 
-public enum UserRole {
+public enum Role {
     USER,
     ADMIN
 }
