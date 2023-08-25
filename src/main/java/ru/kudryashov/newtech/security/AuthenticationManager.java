@@ -7,18 +7,18 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import ru.kudryashov.newtech.entities.User;
 import ru.kudryashov.newtech.exceptions.UnauthorizedException;
-import ru.kudryashov.newtech.services.UserService;
+import ru.kudryashov.newtech.services.impl.UserBaseService;
 
 @Component
 @RequiredArgsConstructor
 public class AuthenticationManager implements ReactiveAuthenticationManager {
 
-    private final UserService userService;
+    private final UserBaseService userBaseService;
 
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {
         CustomPrincipal principal = (CustomPrincipal) authentication.getPrincipal();
-        return userService.getUserById(principal.getId())
+        return userBaseService.getUserById(principal.getId())
                 .filter(User::isEnabled)
                 .switchIfEmpty(Mono.error(new UnauthorizedException("the user is disabled")))
                 .map(user -> authentication);

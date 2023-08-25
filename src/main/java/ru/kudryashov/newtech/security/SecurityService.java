@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 import ru.kudryashov.newtech.consts.ProjectConsts;
 import ru.kudryashov.newtech.entities.User;
 import ru.kudryashov.newtech.exceptions.AuthException;
-import ru.kudryashov.newtech.services.UserService;
+import ru.kudryashov.newtech.services.impl.UserBaseService;
 
 import java.util.*;
 
@@ -18,7 +18,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class SecurityService {
 
-    private final UserService userService;
+    private final UserBaseService userBaseService;
     private final PasswordEncoder passwordEncoder;
 
     @Value("${jwt.secret}")
@@ -29,7 +29,7 @@ public class SecurityService {
     private String issuer;
 
     public Mono<TokenDetails> authenticate(String username, String password) {
-        return userService.getUserByUsername(username)
+        return userBaseService.getUserByUsername(username)
                 .flatMap(user -> {
                     if (!user.isEnabled()) {
                         return Mono.error(new AuthException("the account is disabled", "auth.account.disabled"));

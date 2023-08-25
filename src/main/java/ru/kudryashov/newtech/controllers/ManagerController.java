@@ -8,7 +8,7 @@ import ru.kudryashov.newtech.consts.SwaggerTag;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/request")
-@Api(SwaggerTag.REQUEST_TAG)
-public class RequestController {
+@RequestMapping("/api/v1/manager")
+@Api(SwaggerTag.MANAGER_TAG)
+public class ManagerController {
 }

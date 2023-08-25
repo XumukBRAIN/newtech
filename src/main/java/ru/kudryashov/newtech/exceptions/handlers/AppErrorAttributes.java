@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+//todo переделать на ExceptionHandler
 @Component
 public class AppErrorAttributes extends DefaultErrorAttributes {
 
