@@ -1,6 +1,7 @@
 package ru.kudryashov.newtech.services.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import ru.kudryashov.newtech.enums.Topic;
 import ru.kudryashov.newtech.services.TopicService;
@@ -32,7 +33,7 @@ public class TopicCachedService implements TopicService {
         Collection<String> topics = new CopyOnWriteArrayList<>(
                 Arrays.stream(Topic.values()).map(Topic::getName).toList()
         );
-        if (!topics.isEmpty()) {
+        if (CollectionUtils.isNotEmpty(topics)) {
             cache = topics;
             log.info("Кэш топиков заполнен успешно.");
         }
